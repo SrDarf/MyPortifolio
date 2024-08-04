@@ -107,6 +107,10 @@ function type() {
                 if (textIndex === texts.length - 1) {
                  
                     textsElement.classList.add('rainbow');
+                    setTimeout(function() {
+                        document.getElementById('animation').classList.remove('hidden');
+                    }, 2000);
+                    
                     const timeoutId = setTimeout(() => {
                         startRainbowEffect();
                     }, 400);
