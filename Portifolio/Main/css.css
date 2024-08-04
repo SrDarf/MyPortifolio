@@ -291,7 +291,7 @@ html {
 }
 
 #animation {
-  animation: float 3s ease-in-out infinite;
+  animation: float 2.5s ease-in-out infinite;
   transition: opacity 0.5s ease;
 }
 
