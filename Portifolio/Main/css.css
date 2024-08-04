@@ -1,11 +1,8 @@
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
   * {
     scrollbar-width: thin;
     scrollbar-color: #1c1c1c #000000;
   }
 
-  /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 16px;
   }
@@ -27,8 +24,6 @@ body {
   font-family: "Space Mono", monospace;
 
 }
-
-
 
 html {
   scroll-behavior: smooth;
