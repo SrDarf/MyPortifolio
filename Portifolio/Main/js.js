@@ -10,9 +10,6 @@ function loadNavbar() {
 
 document.addEventListener('DOMContentLoaded', loadNavbar);
 
-
-
-
 // Switch de cores do github pra ficar 0 bala 
 
 let git = document.getElementById('githubicon')
@@ -80,11 +77,6 @@ function startRainbowEffect() {
     })();
 }
 
-
-
-
-
-
 const texts = ['a student','a tech entusiast','Your next Front-End developer'];
 const typingSpeed = 50; 
 const erasingSpeed = 50; 
@@ -109,7 +101,7 @@ function type() {
                     textsElement.classList.add('rainbow');
                     setTimeout(function() {
                         document.getElementById('animation').classList.remove('hidden');
-                    }, 2000);
+                    }, 1500);
                     
                     const timeoutId = setTimeout(() => {
                         startRainbowEffect();
@@ -135,9 +127,6 @@ function type() {
 }
 
 type();
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
  
@@ -183,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15 // Ajuste a porcentagem de visibilidade necessária para ativar o efeito
+        threshold: 0.15 
     });
 
     aboutMeObserver.observe(aboutMeSection);
