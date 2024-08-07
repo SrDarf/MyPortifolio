@@ -8,6 +8,12 @@ function loadNavbar() {
         .catch(error => console.error('Erro ao carregar o menu:', error));
 }
 
+function clicar() {
+    const btn = document.getElementById('barsbtn');
+    btn.click();
+}
+
+
 document.addEventListener('DOMContentLoaded', loadNavbar);
 
 // Switch de cores do github pra ficar 0 bala 
