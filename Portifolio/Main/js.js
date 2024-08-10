@@ -187,3 +187,170 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  const contactForm = document.querySelector('.contact-form');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        contactForm.classList.add('visible');
+        observer.unobserve(entry.target); // Opcionalmente, parar de observar após a animação
+      }
+    });
+  }, {
+    threshold: 0.1 // A porcentagem do contêiner visível antes da animação começar
+  });
+
+  observer.observe(contactForm);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const textareas = document.querySelectorAll('textarea');
+  
+    textareas.forEach(textarea => {
+      textarea.addEventListener('input', autoResize);
+      autoResize.call(textarea); // Ajusta a altura ao carregar a página
+    });
+  
+    function autoResize() {
+      this.style.height = 'auto'; // Reseta a altura para calcular o novo valor
+      this.style.height = `${this.scrollHeight}px`; // Define a altura baseada no conteúdo
+    }
+  });
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const emailInput = document.getElementById('email');
+    const emailValidationIcon = document.querySelector('.email-validation-icon');
+    const emailErrorMessage = document.querySelector('.email-error-message');
+
+    // Expressão regular para validar o formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    emailInput.addEventListener('input', function () {
+        if (emailRegex.test(emailInput.value)) {
+            emailInput.classList.remove('invalid');
+            emailInput.classList.add('valid');
+            emailValidationIcon.classList.remove('invalid');
+            emailValidationIcon.classList.add('valid');
+            emailValidationIcon.classList.add('fa-check');
+            emailValidationIcon.classList.remove('fa-xmark');
+            emailErrorMessage.textContent = '';
+            emailErrorMessage.style.display = 'none';
+        } else {
+            emailInput.classList.remove('valid');
+            emailInput.classList.add('invalid');
+            emailValidationIcon.classList.remove('valid');
+            emailValidationIcon.classList.add('invalid');
+            emailValidationIcon.classList.add('fa-xmark');
+            emailValidationIcon.classList.remove('fa-check');
+            emailErrorMessage.textContent = 'Invalid email address';
+            emailErrorMessage.style.display = 'block';
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const emailInput = document.getElementById('email');
+    const emailValidationIcon = document.querySelector('.email-validation-icon');
+    const emailErrorMessage = document.querySelector('.email-error-message');
+    
+    const messageTextarea = document.getElementById('message');
+    const textareaValidationIcon = document.querySelector('.textarea-validation-icon');
+    const textareaErrorMessage = document.querySelector('.textarea-error-message');
+    const form = document.querySelector('form'); // Referência ao formulário
+    const submitButton = form.querySelector('button[type="submit"]'); // Referência ao botão de envio
+
+    // Expressão regular para validar o formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateEmail() {
+        if (emailRegex.test(emailInput.value)) {
+            emailInput.classList.remove('invalid');
+            emailInput.classList.add('valid');
+            emailValidationIcon.classList.remove('invalid');
+            emailValidationIcon.classList.add('valid');
+            emailValidationIcon.classList.add('fa-check');
+            emailValidationIcon.classList.remove('fa-xmark');
+            emailErrorMessage.textContent = '';
+            emailErrorMessage.style.display = 'none';
+        } else {
+            emailInput.classList.remove('valid');
+            emailInput.classList.add('invalid');
+            emailValidationIcon.classList.remove('valid');
+            emailValidationIcon.classList.add('invalid');
+            emailValidationIcon.classList.add('fa-xmark');
+            emailValidationIcon.classList.remove('fa-check');
+            emailErrorMessage.textContent = 'Invalid email address';
+            emailErrorMessage.style.display = 'block';
+        }
+    }
+
+    function validateTextarea() {
+        const length = messageTextarea.value.length;
+        if (length >= 20 && length <= 1000) {
+            messageTextarea.classList.remove('invalid');
+            messageTextarea.classList.add('valid');
+            textareaValidationIcon.classList.remove('invalid');
+            textareaValidationIcon.classList.add('valid');
+            textareaValidationIcon.classList.add('fa-check');
+            textareaValidationIcon.classList.remove('fa-xmark');
+            textareaErrorMessage.textContent = `${length}`;
+            textareaErrorMessage.classList.add('valid'); // Adiciona a classe 'valid' para mensagem verde
+            textareaErrorMessage.style.display = 'block'; // Garante que a mensagem esteja visível
+        } else {
+            messageTextarea.classList.remove('valid');
+            messageTextarea.classList.add('invalid');
+            textareaValidationIcon.classList.remove('valid');
+            textareaValidationIcon.classList.add('invalid');
+            textareaValidationIcon.classList.add('fa-xmark');
+            textareaValidationIcon.classList.remove('fa-check');
+            textareaErrorMessage.textContent = `${length}`;
+            textareaErrorMessage.classList.remove('valid'); // Remove a classe 'valid' para mensagem vermelha
+            textareaErrorMessage.style.display = 'block'; // Garante que a mensagem esteja visível
+        }
+    }
+
+    function validateForm() {
+        const emailValid = emailRegex.test(emailInput.value);
+        const textareaValid = messageTextarea.value.length >= 20 && messageTextarea.value.length <= 1000;
+        
+        // Habilita ou desabilita o botão de envio
+        if (emailValid && textareaValid) {
+            submitButton.disabled = false;
+            submitButton.classList.remove('disabled');
+        } else {
+            submitButton.disabled = true;
+            submitButton.classList.add('disabled');
+        }
+    }
+
+    emailInput.addEventListener('input', function () {
+        validateEmail();
+        validateForm(); // Atualiza a validação do formulário
+    });
+
+    messageTextarea.addEventListener('input', function () {
+        validateTextarea();
+        validateForm(); // Atualiza a validação do formulário
+    });
+
+    // Validar o formulário antes do envio
+    form.addEventListener('submit', function (event) {
+        if (submitButton.disabled) {
+            event.preventDefault();
+            textareaErrorMessage.textContent = `Your message length must be 20 characters or higher`;
+            // Impede o envio do formulário se o botão estiver desativado
+            // Mensagens de erro se o botão estiver desativado
+            if (!emailRegex.test(emailInput.value)) {
+                emailErrorMessage.textContent = 'Invalid email address';
+                emailErrorMessage.style.display = 'block';
+            }
+            if (messageTextarea.value.length < 20) {
+                textareaErrorMessage.textContent = 'Message must be at least 20 characters long.';
+                textareaErrorMessage.classList.remove('valid'); // Remove a classe 'valid' para mensagem vermelha
+                textareaErrorMessage.style.display = 'block'; // Garante que a mensagem esteja visível
+            }
+        }
+    });
+});

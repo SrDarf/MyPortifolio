@@ -786,3 +786,268 @@ color: #fff;
 .footer-links i {
 font-size: 24px; 
 }
+/* Contact Section Styles */
+#contact {
+  background: rgba(12, 12, 12, 0.5); 
+  margin-top: 2rem;
+  padding: 60px 20px; /* Aumenta o padding para um melhor espaçamento */
+  text-align: center; 
+  backdrop-filter: blur(15px); /* Aumenta o desfoque para um efeito mais intenso */
+  -webkit-backdrop-filter: blur(15px); 
+}
+
+/* Animação de construção */
+@keyframes buildAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.contact-form {
+  width: 80%; /* Aproveita melhor o espaço em telas grandes */
+  max-width: 600px; /* Largura máxima para melhor visualização */
+  margin: 0 auto;
+  font-family: "Roboto";
+  border-radius: 16px; /* Arredondamento dos cantos */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 40px; /* Espaçamento interno */
+  backdrop-filter: blur(9.8px); /* Efeito de desfoque de vidro */
+  -webkit-backdrop-filter: blur(9.8px); /* Compatibilidade com WebKit */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borda leve */
+  opacity: 0; /* Inicialmente invisível */
+  transform: scale(0.9); /* Inicialmente menor */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.contact-form.visible {
+  animation: buildAnimation 1s forwards; /* Aplicar a animação de construção */
+}
+
+
+
+.contact-form h1 {
+  font-size: 2.8rem; /* Aumenta o tamanho da fonte para uma melhor visualização */
+  color: #e0e0e0; 
+  margin-bottom: 20px; 
+  font-family: "Roboto", sans-serif; 
+}
+
+.contact-form label {
+  display: block; 
+  color: #ddd; 
+  font-family: "Roboto", sans-serif; 
+  margin-bottom: 8px; /* Aumenta o espaçamento para melhorar a leitura */
+  text-align: left; 
+}
+
+.contact-form input, 
+.contact-form textarea {
+  width: 100%; 
+  padding: 12px; /* Aumenta o padding para um melhor conforto ao digitar */
+  margin-bottom: 15px; 
+  border: none; 
+  border-radius: 5px; /* Aumenta o arredondamento dos cantos para um visual mais suave */
+  background-color: #333; 
+  color: #fff; 
+  font-size: 1rem; 
+  font-family: "Roboto", sans-serif; 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Sombra para o foco em estado válido */
+.contact-form input.valid:focus,
+.contact-form textarea.valid:focus {
+  box-shadow: 0 0 5px rgb(115, 255, 0); /* Sombra azul */
+}
+
+/* Sombra para o foco em estado inválido */
+.contact-form input.invalid:focus,
+.contact-form textarea.invalid:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* Sombra vermelha */
+}
+
+/* Estilo padrão para o foco */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background-color: #444; /* Torna o fundo um pouco mais claro ao focar */
+  outline: none; 
+}
+
+
+.contact-form button {
+  background-color: #161616c7; /* Muda a cor do botão para um laranja mais vivo */
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 12px 24px; /* Aumenta o padding para um botão mais confortável */
+  font-size: 1.1rem; /* Aumenta o tamanho da fonte do botão */
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.contact-form button:hover {
+  background-color: #0a0a0a; /* Muda a cor do botão ao passar o mouse */
+  transform: scale(1.05); 
+}
+
+.smaller{
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  #contact {
+    padding: 40px 10px; /* Ajusta o padding para telas menores */
+  }
+
+  .contact-form {
+    padding: 20px; 
+    width: 90%; /* Ajusta a largura para se adequar melhor em telas pequenas */
+  }
+
+  button[type="submit"].disabled {
+    cursor: not-allowed;
+}
+
+
+
+button[type="submit"].disabled:hover {
+  background-color: rgba(255, 0, 0, 0.281);
+  cursor: not-allowed;
+}
+
+
+
+  .contact-form input{
+    width: 90%;
+  }
+
+  .contact-form h1 {
+    font-size: 2.2rem; /* Ajusta o tamanho da fonte para telas menores */
+  }
+}
+
+textarea {
+  width: 110%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden; /* Evita a barra de rolagem interna */
+  resize: none; /* Remove a capacidade de redimensionar manualmente */
+}
+
+/* Container do textarea com ícone */
+.textarea-container {
+  position: relative; /* Necessário para posicionar o ícone corretamente */
+}
+
+/* Ícone de validação do textarea */
+.textarea-validation-icon {
+  position: absolute;
+  right: 0px;
+  bottom: 10%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: transparent; /* Inicialmente invisível */
+  transition: color 0.3s ease, opacity 0.3s ease; /* Transições suaves */
+  opacity: 0; /* Inicialmente invisível */
+}
+
+/* Ícone válido */
+.textarea-validation-icon.valid {
+  color: rgb(115, 255, 0); /* Cor do ícone azul */
+  opacity: 1; /* Visível */
+}
+
+/* Ícone inválido */
+.textarea-validation-icon.invalid {
+  color: rgba(255, 0, 0, 0.8); /* Cor do ícone vermelho */
+  opacity: 1; /* Visível */
+}
+
+/* Mensagem de erro do textarea */
+.textarea-error-message {
+  color: rgba(255, 0, 0, 0.8); /* Cor da mensagem de erro vermelha */
+  font-size: 0.9em;
+  margin-bottom: 2rem;
+}
+
+/* Sombra para o foco em estado válido */
+.textarea-container textarea.valid:focus {
+  box-shadow: 0 0 5px rgb(115, 255, 0); /* Sombra azul */
+}
+
+.verde{
+  color: rgb(115, 255, 0);;
+}
+
+/* Sombra para o foco em estado inválido */
+.textarea-container textarea.invalid:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* Sombra vermelha */
+}
+
+/* Estilo padrão para o foco */
+.textarea-container textarea:focus {
+  background-color: #444; /* Torna o fundo um pouco mais claro ao focar */
+  outline: none; 
+}
+
+
+.email-input-container {
+  position: relative;
+}
+
+/* Mensagem de erro do textarea */
+.textarea-error-message {
+  font-size: 0.9em;
+  margin-top: 5px;
+  color: rgba(255, 0, 0, 0.8); /* Cor da mensagem de erro padrão (vermelho) */
+  transition: color 0.3s ease; /* Transição suave para a cor */
+}
+
+/* Mensagem de erro válida (verde) */
+.textarea-error-message.valid {
+  color: rgba(0, 255, 0, 0.8); /* Cor verde quando válido */
+}
+
+
+.email-validation-icon {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: transparent; /* Inicia invisível */
+  transition: color 0.3s ease, opacity 1.3s ease; /* Transições suaves */
+  opacity: 0; /* Inicia invisível */
+}
+
+.email-validation-icon.valid {
+  color: rgb(11, 216, 11);
+  opacity: 1; /* Torna visível */
+}
+
+.email-validation-icon.invalid {
+  color: red;
+  opacity: 1; /* Torna visível */
+}
+
+.email-error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+
+}
+
+
+
+
