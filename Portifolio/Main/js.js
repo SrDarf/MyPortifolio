@@ -1,4 +1,3 @@
-// Carrega navbar la no index.html
 function loadNavbar() {
     fetch('nav.html')
         .then(response => response.text())
@@ -13,13 +12,9 @@ function clicar() {
     btn.click();
 }
 
-
 document.addEventListener('DOMContentLoaded', loadNavbar);
 
-// Switch de cores do github pra ficar 0 bala 
-
 let git = document.getElementById('githubicon')
-
 
 function switchgit() {
     const git = document.getElementById('githubicon');
@@ -31,10 +26,8 @@ function switchgit() {
 
 function resetgit() {
     const git = document.getElementById('githubicon');
-    
-  
+
     git.querySelector('p').style.color = 'white';
-    
 
     git.querySelector('a').style.color = 'white';
 }
@@ -43,9 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const git = document.getElementById('githubicon');
     git.addEventListener('mouseout', resetgit);
 });
-
-
-//Responsive
 
 function toggleMenu() {
     const navContainer = document.querySelector('.navcontainer');
@@ -56,10 +46,9 @@ function toggleMenu() {
     githubIcon.classList.toggle('active');
 }
 
-
 function startRainbowEffect() {
     let rgbText, nodes, hues;
-    
+
     rgbText = document.querySelector(".rainbow");
 
     rgbText.innerHTML = [].slice
@@ -73,7 +62,7 @@ function startRainbowEffect() {
     nodes.forEach((c, i) => {
         hues.push(Math.round(i * (360 / nodes.length)));
     });
-    
+
     (function loop() {
         hues.forEach((h, i, _this) => {
             _this[i]--;
@@ -103,16 +92,16 @@ function type() {
                 setTimeout(type, typingSpeed);
             } else {
                 if (textIndex === texts.length - 1) {
-                 
+
                     textsElement.classList.add('rainbow');
                     setTimeout(function() {
                         document.getElementById('animation').classList.remove('hidden');
                     }, 1500);
-                    
+
                     const timeoutId = setTimeout(() => {
                         startRainbowEffect();
                     }, 400);
-                
+
                     return;
                 }
                 isErasing = true;
@@ -135,7 +124,7 @@ function type() {
 type();
 
 document.addEventListener('DOMContentLoaded', () => {
- 
+
     const skillsSection = document.querySelector('#skills .skills');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -150,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     observer.observe(skillsSection);
 
- 
     const projectsSection = document.querySelector('#myprojects .myprojects');
     const projectsObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -165,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     projectsObserver.observe(projectsSection);
 });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const aboutMeSection = document.querySelector('#about-me');
@@ -184,9 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
     aboutMeObserver.observe(aboutMeSection);
 });
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
   const contactForm = document.querySelector('.contact-form');
 
@@ -194,11 +178,11 @@ document.addEventListener('DOMContentLoaded', function () {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         contactForm.classList.add('visible');
-        observer.unobserve(entry.target); // Opcionalmente, parar de observar após a animação
+        observer.unobserve(entry.target); 
       }
     });
   }, {
-    threshold: 0.1 // A porcentagem do contêiner visível antes da animação começar
+    threshold: 0.1 
   });
 
   observer.observe(contactForm);
@@ -206,26 +190,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const textareas = document.querySelectorAll('textarea');
-  
+
     textareas.forEach(textarea => {
       textarea.addEventListener('input', autoResize);
-      autoResize.call(textarea); // Ajusta a altura ao carregar a página
+      autoResize.call(textarea); 
     });
-  
+
     function autoResize() {
-      this.style.height = 'auto'; // Reseta a altura para calcular o novo valor
-      this.style.height = `${this.scrollHeight}px`; // Define a altura baseada no conteúdo
+      this.style.height = 'auto'; 
+      this.style.height = `${this.scrollHeight}px`; 
     }
   });
-
-
 
   document.addEventListener('DOMContentLoaded', function () {
     const emailInput = document.getElementById('email');
     const emailValidationIcon = document.querySelector('.email-validation-icon');
     const emailErrorMessage = document.querySelector('.email-error-message');
 
-    // Expressão regular para validar o formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     emailInput.addEventListener('input', function () {
@@ -254,14 +235,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailInput = document.getElementById('email');
     const emailValidationIcon = document.querySelector('.email-validation-icon');
     const emailErrorMessage = document.querySelector('.email-error-message');
-    
+
     const messageTextarea = document.getElementById('message');
     const textareaValidationIcon = document.querySelector('.textarea-validation-icon');
     const textareaErrorMessage = document.querySelector('.textarea-error-message');
-    const form = document.querySelector('form'); // Referência ao formulário
-    const submitButton = form.querySelector('button[type="submit"]'); // Referência ao botão de envio
+    const form = document.querySelector('form'); 
+    const submitButton = form.querySelector('button[type="submit"]'); 
 
-    // Expressão regular para validar o formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function validateEmail() {
@@ -296,8 +276,8 @@ document.addEventListener('DOMContentLoaded', function () {
             textareaValidationIcon.classList.add('fa-check');
             textareaValidationIcon.classList.remove('fa-xmark');
             textareaErrorMessage.textContent = `${length}`;
-            textareaErrorMessage.classList.add('valid'); // Adiciona a classe 'valid' para mensagem verde
-            textareaErrorMessage.style.display = 'block'; // Garante que a mensagem esteja visível
+            textareaErrorMessage.classList.add('valid'); 
+            textareaErrorMessage.style.display = 'block'; 
         } else {
             messageTextarea.classList.remove('valid');
             messageTextarea.classList.add('invalid');
@@ -306,16 +286,15 @@ document.addEventListener('DOMContentLoaded', function () {
             textareaValidationIcon.classList.add('fa-xmark');
             textareaValidationIcon.classList.remove('fa-check');
             textareaErrorMessage.textContent = `${length}`;
-            textareaErrorMessage.classList.remove('valid'); // Remove a classe 'valid' para mensagem vermelha
-            textareaErrorMessage.style.display = 'block'; // Garante que a mensagem esteja visível
+            textareaErrorMessage.classList.remove('valid'); 
+            textareaErrorMessage.style.display = 'block'; 
         }
     }
 
     function validateForm() {
         const emailValid = emailRegex.test(emailInput.value);
         const textareaValid = messageTextarea.value.length >= 20 && messageTextarea.value.length <= 1000;
-        
-        // Habilita ou desabilita o botão de envio
+
         if (emailValid && textareaValid) {
             submitButton.disabled = false;
             submitButton.classList.remove('disabled');
@@ -327,29 +306,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     emailInput.addEventListener('input', function () {
         validateEmail();
-        validateForm(); // Atualiza a validação do formulário
+        validateForm(); 
     });
 
     messageTextarea.addEventListener('input', function () {
         validateTextarea();
-        validateForm(); // Atualiza a validação do formulário
+        validateForm(); 
     });
 
-    // Validar o formulário antes do envio
     form.addEventListener('submit', function (event) {
         if (submitButton.disabled) {
             event.preventDefault();
             textareaErrorMessage.textContent = `Your message length must be 20 characters or higher`;
-            // Impede o envio do formulário se o botão estiver desativado
-            // Mensagens de erro se o botão estiver desativado
+
             if (!emailRegex.test(emailInput.value)) {
                 emailErrorMessage.textContent = 'Invalid email address';
                 emailErrorMessage.style.display = 'block';
             }
             if (messageTextarea.value.length < 20) {
                 textareaErrorMessage.textContent = 'Message must be at least 20 characters long.';
-                textareaErrorMessage.classList.remove('valid'); // Remove a classe 'valid' para mensagem vermelha
-                textareaErrorMessage.style.display = 'block'; // Garante que a mensagem esteja visível
+                textareaErrorMessage.classList.remove('valid'); 
+                textareaErrorMessage.style.display = 'block'; 
             }
         }
     });
