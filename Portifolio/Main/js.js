@@ -330,3 +330,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+function showToastDiscord(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.style.opacity = "1";
+
+    navigator.clipboard.writeText("sr.dark").catch(err => console.error("Erro ao copiar:", err));
+
+    setTimeout(() => {
+        toast.style.opacity = "0";
+    }, 3000);
+}
+
+function showToastMail(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.style.opacity = "1";
+
+    navigator.clipboard.writeText("marcospixixo@gmail.com").catch(err => console.error("Erro ao copiar:", err));
+
+    setTimeout(() => {
+        toast.style.opacity = "0";
+    }, 3000);
+}
+
