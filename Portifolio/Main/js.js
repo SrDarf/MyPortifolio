@@ -238,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const messageTextarea = document.getElementById('message');
     const textareaValidationIcon = document.querySelector('.textarea-validation-icon');
-    const textareaErrorMessage = document.querySelector('.textarea-error-message');
     const form = document.querySelector('form'); 
     const submitButton = form.querySelector('button[type="submit"]'); 
 
