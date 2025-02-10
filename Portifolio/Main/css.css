@@ -1032,6 +1032,7 @@ margin-top: 5px;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
+  z-index: 9999999999;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
