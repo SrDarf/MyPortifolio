@@ -72,7 +72,7 @@ function startRainbowEffect() {
     })();
 }
 
-const texts = ['a student','a tech entusiast','Your next Front-End developer'];
+const texts = ['a student','a tech entusiast','Your next developer'];
 const typingSpeed = 50; 
 const erasingSpeed = 50; 
 const newTextDelay = 1000; 
@@ -355,4 +355,5 @@ function showToastMail(message) {
         toast.style.opacity = "0";
     }, 3000);
 }
+
 
